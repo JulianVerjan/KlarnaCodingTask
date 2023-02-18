@@ -1,0 +1,6 @@
+ext {
+    endpoints = [
+            endpoint_url = "\"https://api.themoviedb.org/3/\"",
+            image_url = "\"https://image.tmdb.org/t/p/w500/\"",
+    ]
+}
