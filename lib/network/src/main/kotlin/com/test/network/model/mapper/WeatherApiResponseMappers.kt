@@ -6,7 +6,6 @@ import com.test.model.WeatherOnLocation
 import com.test.network.model.reponse.DaysInformationResponse
 import com.test.network.model.reponse.ForecastResponse
 import com.test.network.model.reponse.WeatherOnLocationResponse
-import okhttp3.internal.toImmutableList
 
 fun ForecastResponse.toForecastModel() = Forecast(
     code = this.code,
@@ -49,5 +48,5 @@ fun List<DaysInformationResponse>.toDaysInformationModel(): List<DaysInformation
             )
         )
     }
-    return listResult.toImmutableList()
+    return listResult.toList()
 }

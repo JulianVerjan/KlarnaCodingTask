@@ -28,15 +28,16 @@ dependencies {
     def generalTestDependencies = rootProject.ext.generalTestDependencies
 
     implementation generalDependencies.hiltCore,
-            generalDependencies.coroutinesCore,
-            generalDependencies.mockitoKotlinLib
+            generalDependencies.coroutinesCore
 
     kapt generalDependencies.hiltAndroidCompiler
 
     testImplementation generalTestDependencies.jUniTest,
-    generalTestDependencies.mock,
     generalTestDependencies.rules,
     generalTestDependencies.runner,
     generalTestDependencies.mockServer,
-    generalTestDependencies.coroutineTest
+    generalTestDependencies.coroutineTest,
+    generalDependencies.mockitoKotlin
+
+    androidTestImplementation generalDependencies.mockitoKotlin
 }

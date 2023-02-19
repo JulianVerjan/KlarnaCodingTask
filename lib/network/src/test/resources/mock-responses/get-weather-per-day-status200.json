@@ -1,0 +1,46 @@
+{
+  "coord": {
+    "lon": 13.4,
+    "lat": 52.52
+  },
+  "weather": [
+    {
+      "id": 520,
+      "main": "Rain",
+      "description": "light intensity shower rain",
+      "icon": "09d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 283.04,
+    "feels_like": 279.26,
+    "temp_min": 282.62,
+    "temp_max": 283.74,
+    "pressure": 996,
+    "humidity": 93
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 9.77,
+    "deg": 250
+  },
+  "rain": {
+    "1h": 0.19
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1676728082,
+  "sys": {
+    "type": 2,
+    "id": 2009543,
+    "country": "DE",
+    "sunrise": 1676701062,
+    "sunset": 1676737399
+  },
+  "timezone": 3600,
+  "id": 6545310,
+  "name": "Mitte",
+  "cod": 200
+}

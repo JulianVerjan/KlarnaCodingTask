@@ -8,11 +8,15 @@ android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
     compileSdk globalConfiguration["compileSdk"]
 
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
     defaultConfig {
         minSdk = globalConfiguration["minSdk"]
         targetSdk = globalConfiguration["targetSdk"]
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "API_BASE_URL", endpoint_url
+        buildConfigField "String", "API_KEY", localProperties.getProperty("API_KEY")
     }
 
     compileOptions {
@@ -25,19 +29,19 @@ dependencies {
     def generalDependencies = rootProject.ext.generalDependencies
     def generalTestDependencies = rootProject.ext.generalTestDependencies
 
-    api generalDependencies.loggingInterceptor,
-            generalDependencies.retrofit
+    api generalDependencies.retrofit
     implementation project(":lib:model")
 
     implementation generalDependencies.moshi,
-            generalDependencies.hiltCore,
-            generalDependencies.mockitoKotlinLib
+            generalDependencies.hiltCore
 
     kapt generalDependencies.hiltAndroidCompiler
 
     testImplementation generalTestDependencies.jUniTest,
-            generalTestDependencies.mock,
             generalTestDependencies.runner,
             generalTestDependencies.mockServer,
-            generalTestDependencies.coroutineTest
+            generalTestDependencies.coroutineTest,
+            generalDependencies.mockitoKotlin
+
+    androidTestImplementation generalDependencies.mockitoKotlin
 }

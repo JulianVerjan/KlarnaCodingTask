@@ -3,7 +3,7 @@ package com.test.data.repository
 import com.test.data.source.WeatherRemoteDataSource
 import com.test.model.Forecast
 import com.test.model.WeatherOnLocation
-import com.test.network.model.mapper.NetworkResultResult
+import com.test.network.model.mapper.NetworkResult
 import com.test.network.model.mapper.toForecastModel
 import com.test.network.model.mapper.toRepositoryResult
 import com.test.network.model.mapper.toWeatherOnLocationModel
@@ -18,14 +18,14 @@ class WeatherRepository @Inject constructor(
     suspend fun fetchForecastInfo(
         latitude: Double,
         longitude: Double
-    ): NetworkResultResult<Forecast> =
+    ): NetworkResult<Forecast> =
         weatherRemoteDataSource.fetchForecastInfo(latitude, longitude)
             .toRepositoryResult(ForecastResponse::toForecastModel)
 
     suspend fun fetchWeatherOnLocationInfo(
         latitude: Double,
         longitude: Double
-    ): NetworkResultResult<WeatherOnLocation> =
+    ): NetworkResult<WeatherOnLocation> =
         weatherRemoteDataSource.fetchWeatherOnLocationInfo(latitude, longitude)
             .toRepositoryResult(WeatherOnLocationResponse::toWeatherOnLocationModel)
 
