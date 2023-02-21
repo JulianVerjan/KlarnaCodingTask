@@ -3,14 +3,13 @@ package com.test.data.usecase
 import com.test.data.repository.WeatherRepository
 import javax.inject.Inject
 
-class GetWeatherOnLocationInfoUseCase @Inject constructor(
+class GetCurrentWeatherInfoUseCase @Inject constructor(
     private val weatherRepository: WeatherRepository
 ) {
 
-    suspend fun fetchWeatherOnLocationInfo(
+    suspend fun fetchCurrentWeatherInfo(
         latitude: Double,
         longitude: Double
-    ) =
-        weatherRepository.fetchWeatherOnLocationInfo(latitude, longitude)
+    ) = weatherRepository.fetchCurrentWeatherInfo(latitude, longitude)
 
 }

@@ -2,20 +2,20 @@ package com.test.network.model.mapper
 
 import com.test.model.DaysInformation
 import com.test.model.Forecast
-import com.test.model.WeatherOnLocation
+import com.test.model.CurrentWeatherInfo
 import com.test.network.model.reponse.DaysInformationResponse
 import com.test.network.model.reponse.ForecastResponse
-import com.test.network.model.reponse.WeatherOnLocationResponse
+import com.test.network.model.reponse.CurrentWeatherInfoResponse
 
 fun ForecastResponse.toForecastModel() = Forecast(
-    code = this.code,
+    cod = this.cod,
     message = this.message,
     cnt = this.cnt,
     city = this.city.toCityModel(),
     list = this.list.toDaysInformationModel()
 )
 
-fun WeatherOnLocationResponse.toWeatherOnLocationModel() = WeatherOnLocation(
+fun CurrentWeatherInfoResponse.toCurrentWeatherInfoModel() = CurrentWeatherInfo(
     dt = this.dt,
     timezone = this.timezone,
     id = this.id,
@@ -24,7 +24,7 @@ fun WeatherOnLocationResponse.toWeatherOnLocationModel() = WeatherOnLocation(
     visibility = this.visibility,
     base = this.base,
     coord = this.coord.toCoordinateModel(),
-    weather = this.weather.toWeatherModel(),
+    weather = this.weather.toWeatherListModel(),
     main = this.main.toWeatherMainInformationModel(),
     wind = this.wind.toWindModel(),
     clouds = this.clouds.toCloudModel(),
@@ -40,7 +40,7 @@ fun List<DaysInformationResponse>.toDaysInformationModel(): List<DaysInformation
                 visibility = it.visibility,
                 dt_txt = it.dt_txt,
                 main = it.main.toWeatherMainInformationModel(),
-                weather = it.weather.toWeatherModel(),
+                weather = it.weather.toWeatherListModel(),
                 clouds = it.clouds.toCloudModel(),
                 wind = it.wind.toWindModel(),
                 sys = it.sys.toSysModel(),

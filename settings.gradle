@@ -10,6 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 rootProject.name = "KlarnaCodingTask"
@@ -17,3 +18,4 @@ include ':app'
 include ':lib:data'
 include ':lib:network'
 include ':lib:model'
+include ':feature:weather'

@@ -1,6 +1,6 @@
 ext {
     endpoints = [
             endpoint_url = "\"https://api.openweathermap.org/data/2.5/\"",
-            image_url = "\"https://api.openweathermap.org/data/2.5/\"",
+            image_url = "\"https://openweathermap.org/img/wn/\"",
     ]
 }

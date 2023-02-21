@@ -3,8 +3,8 @@ package com.test.data.repositories
 import com.test.data.repository.WeatherRepository
 import com.test.data.returnMockedForecast
 import com.test.data.returnMockedForecastResponse
-import com.test.data.returnMockedWeatherOnLocation
-import com.test.data.returnMockedWeatherOnLocationResponse
+import com.test.data.returnMockedCurrentWeatherInfo
+import com.test.data.returnMockedCurrentWeatherInfoResponse
 import com.test.data.source.WeatherRemoteDataSource
 import com.test.network.model.NetworkResponse
 import com.test.network.model.mapper.NetworkResult
@@ -79,20 +79,20 @@ class WeatherRepositoryTest {
     }
 
     @Test
-    fun fetchWeatherOnLocationInfoSuccessfully() {
+    fun fetchCurrentWeatherInfoSuccessfully() {
         runTest {
             whenever(
-                weatherRemoteDataSource.fetchWeatherOnLocationInfo(
+                weatherRemoteDataSource.fetchCurrentWeatherInfo(
                     mockedLatitude,
                     mockedLongitude
                 )
             )
-                .thenReturn(NetworkResponse.Success(returnMockedWeatherOnLocationResponse()))
-            whenever(weatherApi.fetchWeatherOnLocationInfo(mockedLatitude, mockedLongitude))
-                .thenReturn(NetworkResponse.Success(returnMockedWeatherOnLocationResponse()))
+                .thenReturn(NetworkResponse.Success(returnMockedCurrentWeatherInfoResponse()))
+            whenever(weatherApi.fetchCurrentWeatherInfo(mockedLatitude, mockedLongitude))
+                .thenReturn(NetworkResponse.Success(returnMockedCurrentWeatherInfoResponse()))
 
             val response =
-                weatherRepository.fetchWeatherOnLocationInfo(mockedLatitude, mockedLongitude)
+                weatherRepository.fetchCurrentWeatherInfo(mockedLatitude, mockedLongitude)
             assert(response is NetworkResult.Success)
             val successResponse = response as NetworkResult.Success
             assertEquals(successResponse.result?.id, 223)
@@ -100,49 +100,49 @@ class WeatherRepositoryTest {
     }
 
     @Test
-    fun fetchWeatherOnLocationInfoWithApiError() {
+    fun fetchCurrentWeatherInfoWithApiError() {
         runTest {
             whenever(
-                weatherRemoteDataSource.fetchWeatherOnLocationInfo(
+                weatherRemoteDataSource.fetchCurrentWeatherInfo(
                     mockedLatitude,
                     mockedLongitude
                 )
             )
                 .thenReturn(
                     NetworkResponse.ApiError(
-                        returnMockedWeatherOnLocation(),
+                        returnMockedCurrentWeatherInfo(),
                         mockedCodeError
                     )
                 )
-            whenever(weatherApi.fetchWeatherOnLocationInfo(mockedLatitude, mockedLongitude))
+            whenever(weatherApi.fetchCurrentWeatherInfo(mockedLatitude, mockedLongitude))
                 .thenReturn(
                     NetworkResponse.ApiError(
-                        returnMockedWeatherOnLocation(),
+                        returnMockedCurrentWeatherInfo(),
                         mockedCodeError
                     )
                 )
 
             val response =
-                weatherRepository.fetchWeatherOnLocationInfo(mockedLatitude, mockedLongitude)
+                weatherRepository.fetchCurrentWeatherInfo(mockedLatitude, mockedLongitude)
             assertNotNull(response)
             assert(response is NetworkResult.Fail<*>)
         }
     }
 
     @Test
-    fun fetchWeatherOnLocationInfoWithNetworkError() {
+    fun fetchCurrentWeatherInfoWithNetworkError() {
         runTest {
             whenever(
-                weatherRemoteDataSource.fetchWeatherOnLocationInfo(
+                weatherRemoteDataSource.fetchCurrentWeatherInfo(
                     mockedLatitude,
                     mockedLongitude
                 )
             )
                 .thenReturn(NetworkResponse.NetworkError(IOException()))
-            whenever(weatherApi.fetchWeatherOnLocationInfo(mockedLatitude, mockedLongitude))
+            whenever(weatherApi.fetchCurrentWeatherInfo(mockedLatitude, mockedLongitude))
                 .thenReturn(NetworkResponse.NetworkError(IOException()))
             val response =
-                weatherRepository.fetchWeatherOnLocationInfo(mockedLatitude, mockedLongitude)
+                weatherRepository.fetchCurrentWeatherInfo(mockedLatitude, mockedLongitude)
             assertNotNull(response)
             assert(response is NetworkResult.Exception)
         }

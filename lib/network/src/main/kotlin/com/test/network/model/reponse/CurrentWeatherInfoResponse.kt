@@ -8,7 +8,7 @@ import com.test.network.model.reponse.weather.WeatherMainInformationResponse
 import com.test.network.model.reponse.weather.WindResponse
 import com.test.network.model.reponse.weather.WeatherResponse
 
-data class WeatherOnLocationResponse(
+data class CurrentWeatherInfoResponse(
     @field:Json(name = "dt") val dt: Int,
     @field:Json(name = "timezone") val timezone: Int,
     @field:Json(name = "id") val id: Int,
@@ -17,7 +17,7 @@ data class WeatherOnLocationResponse(
     @field:Json(name = "visibility") val visibility: Int,
     @field:Json(name = "base") val base: String,
     @field:Json(name = "coord") val coord: CoordinateResponse,
-    @field:Json(name = "weather") val weather: WeatherResponse,
+    @field:Json(name = "weather") val weather: List<WeatherResponse>,
     @field:Json(name = "main") val main: WeatherMainInformationResponse,
     @field:Json(name = "wind") val wind: WindResponse,
     @field:Json(name = "clouds") val clouds: CloudsResponse,

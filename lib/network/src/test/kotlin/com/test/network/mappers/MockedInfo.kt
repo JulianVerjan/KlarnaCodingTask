@@ -1,7 +1,7 @@
 package com.test.network.mappers
 
 import com.test.model.Forecast
-import com.test.model.WeatherOnLocation
+import com.test.model.CurrentWeatherInfo
 import com.test.model.city.City
 import com.test.model.clouds.Clouds
 import com.test.model.coordinate.Coordinate
@@ -10,7 +10,7 @@ import com.test.model.weather.Weather
 import com.test.model.weather.WeatherMainInformation
 import com.test.model.weather.Wind
 import com.test.network.model.reponse.ForecastResponse
-import com.test.network.model.reponse.WeatherOnLocationResponse
+import com.test.network.model.reponse.CurrentWeatherInfoResponse
 import com.test.network.model.reponse.city.CityResponse
 import com.test.network.model.reponse.clouds.CloudsResponse
 import com.test.network.model.reponse.coordinate.CoordinateResponse
@@ -20,7 +20,7 @@ import com.test.network.model.reponse.weather.WeatherResponse
 import com.test.network.model.reponse.weather.WindResponse
 
 fun returnMockedForecastResponse() = ForecastResponse(
-    code = "for",
+    cod = "for",
     message = "Rain day",
     cnt = 2,
     city = CityResponse(
@@ -36,7 +36,7 @@ fun returnMockedForecastResponse() = ForecastResponse(
     list = listOf()
 )
 
-fun returnMockedWeatherOnLocationResponse() = WeatherOnLocationResponse(
+fun returnMockedCurrentWeatherInfoResponse() = CurrentWeatherInfoResponse(
     dt = 0,
     timezone = 1,
     id = 223,
@@ -45,11 +45,13 @@ fun returnMockedWeatherOnLocationResponse() = WeatherOnLocationResponse(
     visibility = 9,
     base = "Info base",
     coord = CoordinateResponse(23.6544, 34.55444),
-    weather = WeatherResponse(
-        8,
-        "Main Info",
-        "Test Description",
-        "icon test"
+    weather = listOf(
+        WeatherResponse(
+            8,
+            "Main Info",
+            "Test Description",
+            "icon test"
+        )
     ),
     main = WeatherMainInformationResponse(
         45.6,
@@ -77,7 +79,7 @@ fun returnMockedWeatherOnLocationResponse() = WeatherOnLocationResponse(
     )
 )
 
-fun returnMockedWeatherOnLocation() = WeatherOnLocation(
+fun returnMockedCurrentWeatherInfo() = CurrentWeatherInfo(
     dt = 0,
     timezone = 1,
     id = 223,
@@ -86,17 +88,19 @@ fun returnMockedWeatherOnLocation() = WeatherOnLocation(
     visibility = 9,
     base = "Info base",
     coord = Coordinate(23.6544, 34.55444),
-    weather = Weather(
-        8,
-        "Main Info",
-        "Test Description",
-        "icon test"
+    weather = listOf(
+        Weather(
+            8,
+            "Main Info",
+            "Test Description",
+            "icon test"
+        )
     ),
     main = WeatherMainInformation(
         45.6,
-        32.5,
-        10.4,
-        34.4,
+        32,
+        10,
+        34,
         33,
         21,
         10,
@@ -119,7 +123,7 @@ fun returnMockedWeatherOnLocation() = WeatherOnLocation(
 )
 
 fun returnMockedForecast() = Forecast(
-    code = "for",
+    cod = "for",
     message = "Rain day",
     cnt = 2,
     city = City(

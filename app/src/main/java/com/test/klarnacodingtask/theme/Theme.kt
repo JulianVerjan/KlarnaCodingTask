@@ -1,10 +1,13 @@
-package com.test.klarnacodingtask.ui.theme
+package com.test.klarnacodingtask.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.colorResource
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.test.weather.R
 
 private val DarkColorPalette = darkColors(
     primary = Purple200,
@@ -37,6 +40,12 @@ fun KlarnaCodingTaskTheme(
     } else {
         LightColorPalette
     }
+
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setSystemBarsColor(
+        color = colorResource(R.color.main_screen_background),
+        darkIcons = true
+    )
 
     MaterialTheme(
         colors = colors,

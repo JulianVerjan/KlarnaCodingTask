@@ -1,9 +1,13 @@
 package com.test.data
 
+import android.app.Application
+import com.test.data.repository.LocationRepository
 import com.test.data.repository.WeatherRepository
+import com.test.data.source.CurrentLocationDataSource
 import com.test.data.source.WeatherRemoteDataSource
 import com.test.data.usecase.GetForecastInfoUseCase
-import com.test.data.usecase.GetWeatherOnLocationInfoUseCase
+import com.test.data.usecase.GetLocationUseCase
+import com.test.data.usecase.GetCurrentWeatherInfoUseCase
 import com.test.network.service.WeatherApi
 import dagger.Module
 import dagger.Provides
@@ -24,6 +28,13 @@ object DataModule {
     ): WeatherRemoteDataSource {
         return WeatherRemoteDataSource(weatherApi)
     }
+    @Provides
+    @Singleton
+    fun provideCurrentLocationDataSource(
+        appContext: Application
+    ): CurrentLocationDataSource {
+        return CurrentLocationDataSource(appContext)
+    }
 
     // / Provide repositories  and use cases///
 
@@ -37,10 +48,26 @@ object DataModule {
 
     @Singleton
     @Provides
-    fun provideGetWeatherOnLocationInfoUseCase(
+    fun provideLocationRepository(
+        locationDataSource: CurrentLocationDataSource
+    ): LocationRepository {
+        return LocationRepository(locationDataSource)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetLocationUseCase(
+        locationRepository: LocationRepository
+    ): GetLocationUseCase {
+        return GetLocationUseCase(locationRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetCurrentWeatherInfoUseCase(
         weatherRepository: WeatherRepository
-    ): GetWeatherOnLocationInfoUseCase {
-        return GetWeatherOnLocationInfoUseCase(weatherRepository)
+    ): GetCurrentWeatherInfoUseCase {
+        return GetCurrentWeatherInfoUseCase(weatherRepository)
     }
 
     @Singleton

@@ -8,7 +8,7 @@ import com.test.model.weather.Wind
 import com.test.model.sys.SysOnLocation
 
 
-data class WeatherOnLocation(
+data class CurrentWeatherInfo(
     val dt: Int,
     val timezone: Int,
     val id: Int,
@@ -17,7 +17,7 @@ data class WeatherOnLocation(
     val visibility: Int,
     val base: String,
     val coord: Coordinate,
-    val weather: Weather,
+    val weather: List<Weather>,
     val main: WeatherMainInformation,
     val wind: Wind,
     val clouds: Clouds,

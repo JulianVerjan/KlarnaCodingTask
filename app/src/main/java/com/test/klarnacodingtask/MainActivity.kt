@@ -3,41 +3,49 @@ package com.test.klarnacodingtask
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.test.klarnacodingtask.ui.theme.KlarnaCodingTaskTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.test.klarnacodingtask.theme.KlarnaCodingTaskTheme
+import com.test.weather.ScreenRoute
+import com.test.weather.ui.weatherscreen.WeatherScreen
+import com.test.weather.ui.permissionscreen.PermissionsScreen
+import com.test.weather.ui.weatherscreen.composables.LocationErrorScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             KlarnaCodingTaskTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = ScreenRoute.PermissionsScreenRoute.route
+                    ) {
+                        composable(route = ScreenRoute.PermissionsScreenRoute.route)
+                        { PermissionsScreen(navController) }
+
+                        composable(route = ScreenRoute.WeatherScreenRoute.route)
+                        { WeatherScreen(navController) }
+
+                        composable(route = ScreenRoute.LocationErrorScreenRoute.route)
+                        { LocationErrorScreen() }
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    KlarnaCodingTaskTheme {
-        Greeting("Android")
     }
 }

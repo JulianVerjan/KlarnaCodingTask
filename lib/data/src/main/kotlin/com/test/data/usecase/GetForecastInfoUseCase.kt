@@ -10,6 +10,5 @@ class GetForecastInfoUseCase @Inject constructor(
     suspend fun fetchForecastInfo(
         latitude: Double,
         longitude: Double
-    ) =
-        weatherRepository.fetchForecastInfo(latitude, longitude)
+    ) = weatherRepository.fetchForecastInfo(latitude, longitude)
 }

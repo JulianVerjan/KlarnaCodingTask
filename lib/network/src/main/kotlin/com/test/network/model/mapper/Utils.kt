@@ -16,6 +16,7 @@ import com.test.network.model.reponse.sys.SysResponse
 import com.test.network.model.reponse.weather.WeatherMainInformationResponse
 import com.test.network.model.reponse.weather.WeatherResponse
 import com.test.network.model.reponse.weather.WindResponse
+import kotlin.math.roundToInt
 
 fun CloudsResponse.toCloudModel() = Clouds(
     all = this.all
@@ -46,15 +47,28 @@ fun CoordinateResponse.toCoordinateModel() = Coordinate(
 
 fun WeatherMainInformationResponse.toWeatherMainInformationModel() = WeatherMainInformation(
     temp = this.temp,
-    feels_like = this.feels_like,
-    temp_min = this.temp_min,
-    temp_max = this.temp_max,
+    feels_like = this.feels_like.toCelsius(),
+    temp_min = this.temp_min.toCelsius(),
+    temp_max = this.temp_max.toCelsius(),
     pressure = this.pressure,
     sea_level = this.sea_level,
     grnd_level = this.grnd_level,
     humidity = this.humidity,
     temp_kf = this.temp_kf
 )
+
+private fun Double.toCelsius() = (this - 273.15).roundToInt()
+
+fun List<WeatherResponse>.toWeatherListModel()
+        : List<Weather> {
+    val listResult = mutableListOf<Weather>()
+    this.forEach {
+        listResult.add(
+            it.toWeatherModel()
+        )
+    }
+    return listResult.toList()
+}
 
 fun WeatherResponse.toWeatherModel() = Weather(
     id = this.id,

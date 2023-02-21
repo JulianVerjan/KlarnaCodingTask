@@ -9,10 +9,10 @@ import com.test.model.sys.Sys
 data class DaysInformation(
     val dt: Int,
     val visibility: Int,
-    val pop: Int,
+    val pop: Double,
     val dt_txt: String,
     val main: WeatherMainInformation,
-    val weather: Weather,
+    val weather: List<Weather>,
     val clouds: Clouds,
     val wind: Wind,
     val sys: Sys

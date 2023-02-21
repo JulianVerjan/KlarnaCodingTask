@@ -1,7 +1,7 @@
 package com.test.network.mappers
 
 import com.test.network.model.mapper.toForecastModel
-import com.test.network.model.mapper.toWeatherOnLocationModel
+import com.test.network.model.mapper.toCurrentWeatherInfoModel
 import org.junit.Assert
 import org.junit.Test
 
@@ -13,8 +13,8 @@ class WeatherApiResponseMappersTest {
     }
 
     @Test
-    fun mapWeatherOnLocationResponseSuccessfully() {
-        val mockedInfo = returnMockedWeatherOnLocationResponse().toWeatherOnLocationModel()
-        Assert.assertEquals(returnMockedWeatherOnLocation(), mockedInfo)
+    fun mapCurrentWeatherInfoSuccessfully() {
+        val mockedInfo = returnMockedCurrentWeatherInfoResponse().toCurrentWeatherInfoModel()
+        Assert.assertEquals(returnMockedCurrentWeatherInfo(), mockedInfo)
     }
 }

@@ -1,4 +1,4 @@
-package com.test.klarnacodingtask.ui.theme
+package com.test.klarnacodingtask.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

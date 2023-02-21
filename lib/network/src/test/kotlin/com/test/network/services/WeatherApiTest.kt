@@ -58,17 +58,17 @@ class WeatherApiTest {
                 weatherApi.fetchForecastInfo(12.334, 11.2344)
             assertEquals(
                 200,
-                response.toRepositoryResult { it.code }
+                response.toRepositoryResult { it.cod }
             )
         }
     }
 
     @Test
-    fun responseFetchWeatherOnLocationInfoSuccessfully() {
+    fun responseFetchCurrentWeatherInfoSuccessfully() {
         enqueueResponse(WEATHER_BY_DAY_STATUS_200)
         runTest {
             val response =
-                weatherApi.fetchWeatherOnLocationInfo(12.334, 11.2344)
+                weatherApi.fetchCurrentWeatherInfo(12.334, 11.2344)
             assertEquals(
                 6545310,
                 response.toRepositoryResult { it.id }
@@ -83,7 +83,7 @@ class WeatherApiTest {
             val response =
                 weatherApi.fetchForecastInfo(12.334, 11.2344)
             assertEquals(400, response)
-            assertEquals(false, response.toRepositoryResult { it.code })
+            assertEquals(false, response.toRepositoryResult { it.cod })
             assertNull(response)
         }
     }

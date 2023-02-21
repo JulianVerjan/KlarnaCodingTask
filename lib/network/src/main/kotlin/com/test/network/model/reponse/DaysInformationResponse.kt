@@ -10,10 +10,10 @@ import com.test.network.model.reponse.weather.WindResponse
 data class DaysInformationResponse(
     @field:Json(name = "dt") val dt: Int,
     @field:Json(name = "visibility") val visibility: Int,
-    @field:Json(name = "pop") val pop: Int,
+    @field:Json(name = "pop") val pop: Double,
     @field:Json(name = "dt_txt") val dt_txt: String,
     @field:Json(name = "main") val main: WeatherMainInformationResponse,
-    @field:Json(name = "weather") val weather: WeatherResponse,
+    @field:Json(name = "weather") val weather: List<WeatherResponse>,
     @field:Json(name = "clouds") val clouds: CloudsResponse,
     @field:Json(name = "wind") val wind: WindResponse,
     @field:Json(name = "sys") val sys: SysResponse

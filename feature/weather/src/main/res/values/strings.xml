@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">KlarnaCodingTask</string>
+    <string name="location_permission_title">Access to your location is needed!</string>
+    <string name="location_permission_message">Weather app needs location permission to work on your device</string>
+    <string name="location_permission_button_ok">OK</string>
+    <string name="location_permission_button_cancel">Forget it!</string>
+    <string name="close_app_button">Close app</string>
+    <string name="location_permission_mandatory_message">The app wont work without access your location. Could you please reconsider your decision?</string>
+    <string name="location_error_screen_message">We could not get your location. Please try again!</string>
+    <string name="weather_next_days_title">How will the weather be the next 5 days?</string>
+    <string name="weather_sunrise_title">Sunrise</string>
+    <string name="weather_sunset_title">Sunset</string>
+
+</resources>
