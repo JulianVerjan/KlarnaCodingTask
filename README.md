@@ -74,7 +74,7 @@ For more information related to the libraries used, please check the Dependencie
 
 1. I would have liked to implement the UI tests but due to the time I had to do the test, I was only able to implement the unit tests
 2. Work a little more on the design as there are details and components in the code that could be done better.
-3. Have created a common resources module. For example, there is a class that I use in the unit tests to mock the information which I had to copy and paste in all the layers, causing the code to be quite repeated. If I had created a commons module, the above would have been avoided.
+3. Have created a `:common` resources module. For example, there is a class that I use in the unit tests to mock the information which I had to copy and paste in all the layers, causing the code to be quite repeated. If I had created a `:common` module, the above would have been avoided.
 4. If I had had more time I would have tried to organize the code a little better in the feature module and I would have tried to separate it into some utility classes.
 5. There are some strings in the feature code that are hardcoded, I would like to fix this as well.
 
