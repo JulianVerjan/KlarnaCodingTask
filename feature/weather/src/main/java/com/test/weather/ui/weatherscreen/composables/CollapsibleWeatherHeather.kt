@@ -2,6 +2,7 @@ package com.test.weather.ui.weatherscreen.composables
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.size
@@ -20,6 +21,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.test.weather.R
 import com.test.weather.ui.weatherscreen.WeatherInfoState
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
+private val simpleDateFormat = SimpleDateFormat("HH:mm", Locale.ENGLISH)
 
 @Composable
 fun CollapsibleWeatherHeader(
@@ -61,11 +67,22 @@ fun CollapsibleWeatherHeader(
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(16.dp)
             )
-            SunsetAndSunriseCard(
-                state.forecastInfo?.city
-                    ?.sunrise?.toLong() ?: 0L,
-                R.drawable.ic_sunrise
-            )
+
+            val sunriseTimeStamp = state.forecastInfo?.city
+                ?.sunrise?.toLong() ?: 0L
+            val hourRise = Date(sunriseTimeStamp * 1000)
+            val cloudPercentage = state.currentWeatherInfo?.clouds?.all + "% Cloudy"
+            Row {
+                CurrentWeatherSecondaryCard(
+                    simpleDateFormat.format(hourRise),
+                    R.drawable.ic_sunrise
+                )
+                Spacer(Modifier.size(2.dp))
+                CurrentWeatherSecondaryCard(
+                    cloudPercentage,
+                    R.drawable.ic_cloud
+                )
+            }
 
             Spacer(Modifier.size(16.dp))
             Text(
@@ -77,11 +94,22 @@ fun CollapsibleWeatherHeader(
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(16.dp)
             )
-            SunsetAndSunriseCard(
-                state.forecastInfo?.city
-                    ?.sunset?.toLong() ?: 0L,
-                R.drawable.ic_sunset
-            )
+            val sunsetTimeStamp = state.forecastInfo?.city
+                ?.sunrise?.toLong() ?: 0L
+            val hourSunset = Date(sunsetTimeStamp * 1000)
+            val minTemperature = (state.currentWeatherInfo?.main?.temp_min.toString()
+                    + "° Min temperature")
+            Row {
+                CurrentWeatherSecondaryCard(
+                    simpleDateFormat.format(hourSunset),
+                    R.drawable.ic_sunset
+                )
+                Spacer(Modifier.size(2.dp))
+                CurrentWeatherSecondaryCard(
+                    minTemperature,
+                    R.drawable.ic_min_temperature
+                )
+            }
         }
     }
 }

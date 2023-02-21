@@ -18,17 +18,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.test.weather.R
-import java.sql.Timestamp
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-
-private val simpleDateFormat = SimpleDateFormat("HH:mm", Locale.ENGLISH)
 
 @Composable
-fun SunsetAndSunriseCard(timeStamp: Long, @DrawableRes iconRes: Int) {
-    val date = Date(timeStamp * 1000)
-    val formatHour = simpleDateFormat.format(date)
+fun CurrentWeatherSecondaryCard(data: String, @DrawableRes iconRes: Int) {
+
     Card(
         backgroundColor = colorResource(id = R.color.weather_screen_background),
         modifier = Modifier
@@ -47,7 +40,7 @@ fun SunsetAndSunriseCard(timeStamp: Long, @DrawableRes iconRes: Int) {
                     "content description"
                 )
                 Text(
-                    text = formatHour,
+                    text = data,
                     textAlign = TextAlign.Center,
                     style = TextStyle(color = colorResource(R.color.white))
                 )

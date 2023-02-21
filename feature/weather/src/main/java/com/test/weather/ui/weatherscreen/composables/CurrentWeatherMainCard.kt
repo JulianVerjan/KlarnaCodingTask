@@ -24,7 +24,7 @@ import com.test.weather.R
 import com.test.weather.ui.weatherscreen.WeatherInfoState
 
 @Composable
-fun CurrentWeatherCard(
+fun CurrentWeatherMainCard(
     state: WeatherInfoState
 ) {
     state.let { data ->

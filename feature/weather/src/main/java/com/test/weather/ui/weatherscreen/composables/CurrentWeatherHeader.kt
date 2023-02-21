@@ -119,7 +119,7 @@ private fun CollapsibleTopAppBar(
             enter = fadeIn(),
             exit = fadeOut()
         ) {
-            CurrentWeatherCard(state)
+            CurrentWeatherMainCard(state)
         }
     }
 }
