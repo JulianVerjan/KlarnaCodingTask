@@ -28,7 +28,7 @@ import java.util.Locale
 private val simpleDateFormat = SimpleDateFormat("HH:mm", Locale.ENGLISH)
 
 @Composable
-fun CollapsibleWeatherHeader(
+fun CollapsibleWeatherContainer(
     state: WeatherInfoState
 ) {
     val scrollState = rememberScrollState()
@@ -71,7 +71,8 @@ fun CollapsibleWeatherHeader(
             val sunriseTimeStamp = state.forecastInfo?.city
                 ?.sunrise?.toLong() ?: 0L
             val hourRise = Date(sunriseTimeStamp * 1000)
-            val cloudPercentage = state.currentWeatherInfo?.clouds?.all + "% Cloudy"
+            val cloudPercentage = "${state.currentWeatherInfo?.clouds?.all}% Cloudy"
+
             Row {
                 CurrentWeatherSecondaryCard(
                     simpleDateFormat.format(hourRise),
@@ -97,10 +98,10 @@ fun CollapsibleWeatherHeader(
             val sunsetTimeStamp = state.forecastInfo?.city
                 ?.sunrise?.toLong() ?: 0L
             val hourSunset = Date(sunsetTimeStamp * 1000)
-            val minTemperature = (state.currentWeatherInfo?.main?.temp_min.toString()
-                    + "° Min temperature")
-            val feelsLike = (state.currentWeatherInfo?.main?.feels_like.toString()
-                    + "°")
+            val minTemperature =
+                "${state.currentWeatherInfo?.main?.temp_min.toString()}° Min temperature"
+            val feelsLike = "${state.currentWeatherInfo?.main?.feels_like.toString()}°"
+
             Row {
                 CurrentWeatherSecondaryCard(
                     simpleDateFormat.format(hourSunset),
