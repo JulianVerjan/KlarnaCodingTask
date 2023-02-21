@@ -10,7 +10,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.test.weather.R
 import com.test.weather.ui.weatherscreen.composables.LocationErrorScreen
-import com.test.weather.ui.weatherscreen.composables.WeatherInformationScreen
+import com.test.weather.ui.weatherscreen.composables.CollapsibleWeatherHeader
 import com.test.weather.viewmodel.WeatherViewModel
 
 @Composable
@@ -26,7 +26,7 @@ fun WeatherScreen(
     ) {
         when (state.value.uiState) {
             UIState.REQUEST_CONTENT_COMPLETED -> {
-                WeatherInformationScreen(
+                CollapsibleWeatherHeader(
                     state.value,
                 )
             }

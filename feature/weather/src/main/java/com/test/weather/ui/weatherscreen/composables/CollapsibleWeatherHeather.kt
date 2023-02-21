@@ -22,7 +22,7 @@ import com.test.weather.R
 import com.test.weather.ui.weatherscreen.WeatherInfoState
 
 @Composable
-fun WeatherInformationScreen(
+fun CollapsibleWeatherHeader(
     state: WeatherInfoState
 ) {
     val scrollState = rememberScrollState()
@@ -36,10 +36,10 @@ fun WeatherInformationScreen(
                     start = insets.calculateStartPadding(LayoutDirection.Ltr),
                     end = insets.calculateEndPadding(LayoutDirection.Ltr),
                     bottom = insets.calculateBottomPadding(),
-                    top = 250.dp
+                    top = insets.calculateTopPadding()
                 )
             )
-            Spacer(Modifier.size(16.dp))
+            Spacer(Modifier.size(180.dp))
             Text(
                 text = stringResource(R.string.weather_next_days_title),
                 style = TextStyle(
@@ -61,7 +61,7 @@ fun WeatherInformationScreen(
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(16.dp)
             )
-            SunriseAndSunsetUI(
+            SunsetAndSunriseCard(
                 state.forecastInfo?.city
                     ?.sunrise?.toLong() ?: 0L,
                 R.drawable.ic_sunrise
@@ -77,7 +77,7 @@ fun WeatherInformationScreen(
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(16.dp)
             )
-            SunriseAndSunsetUI(
+            SunsetAndSunriseCard(
                 state.forecastInfo?.city
                     ?.sunset?.toLong() ?: 0L,
                 R.drawable.ic_sunset

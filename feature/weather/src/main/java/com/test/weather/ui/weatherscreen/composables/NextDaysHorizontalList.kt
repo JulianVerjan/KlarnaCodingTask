@@ -30,8 +30,8 @@ const val DATE_PATTERN = "yyyy-MM-dd HH:mm:ss"
 fun ForecastHorizontalScrollList(list: List<DaysInformation>?) {
     list?.let {
         LazyRow(content = {
-            itemsIndexed(it) { _, weatherData ->
-                val formatHour = getFormatHour(weatherData.dt_txt)
+            itemsIndexed(it) { _, item ->
+                val formatHour = getFormatHour(item.dt_txt)
                 Column(
                     modifier = Modifier
                         .height(100.dp)
@@ -40,14 +40,14 @@ fun ForecastHorizontalScrollList(list: List<DaysInformation>?) {
                     verticalArrangement = Arrangement.SpaceBetween,
                 ) {
                     SubcomposeAsyncImage(
-                        model = "${BuildConfig.IMAGE_URL}${weatherData.weather.first().icon}@4x.png",
+                        model = "${BuildConfig.IMAGE_URL}${item.weather.first().icon}@4x.png",
                         loading = {
                             CircularProgressIndicator()
                         },
                         contentDescription = stringResource(R.string.app_name)
                     )
                     Text(
-                        text = "${weatherData.main.temp_max}°C",
+                        text = "${item.main.temp_max}°C",
                         color = colorResource(id = R.color.white),
                         fontWeight = FontWeight.Bold
                     )

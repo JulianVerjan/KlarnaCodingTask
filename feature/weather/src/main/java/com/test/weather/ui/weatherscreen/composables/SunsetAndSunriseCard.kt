@@ -26,7 +26,7 @@ import java.util.Locale
 val simpleDateFormat = SimpleDateFormat("HH:mm:ss", Locale.ENGLISH)
 
 @Composable
-fun SunriseAndSunsetUI(timeStamp: Long, @DrawableRes iconRes: Int) {
+fun SunsetAndSunriseCard(timeStamp: Long, @DrawableRes iconRes: Int) {
     val stampSunrise = Timestamp(timeStamp)
     val date = Date(stampSunrise.time)
     val sunrise = simpleDateFormat.format(date)
