@@ -20,12 +20,12 @@ The architecture of the application is based on the following points:
 ### Modules
 
 The next graph shows the app modularisation:
-`:app`  indirectly depends on `:features`.
-`:features`  modules depends on  `:lib:network`,  `:lib:data` and `:lib:model`.
-`:lib:network` depends of `:lib:model`and only of the android native frameworks for backend communication and testing. This layer don’t depends on any UI framework. This project contains also the necessary repositories to propagate the information between the `:features` and `:lib:data`.
-`:lib:data` depends of  `:lib:model`  and contains all the necessary use cases to make the app works(Use cases for fetching weather information). This project contains also the necessary repositories to propagate the information between the `:features` and `:lib:network`.
-`:lib:model`  don’t have any dependency.
-`:lib`  don’t have any dependency.
+- `:app` indirectly depends on `:features`.
+- `:features` modules depends on `:lib:network`, `:lib:data` and `:lib:model`.
+- `:lib:network` depends of `:lib:model`and only of the android native frameworks for backend communication and testing. This layer don’t depends on any UI framework. This project contains also the necessary repositories to propagate the information between the `:features` and `:lib:data`.
+- `:lib:data` depends of `:lib:model` and contains all the necessary use cases to make the app works(Use cases for fetching weather information). This project contains also the necessary repositories to propagate the information between the `:features` and `:lib:network`.
+- `:lib:model` don’t have any dependency.
+- `:lib` don’t have any dependency.
 
 #### App module
 
