@@ -54,21 +54,21 @@ fun CurrentWeatherCard(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
-                CurrentWeatherInfoUI(
+                CurrentWeatherInfoRow(
                     value = data.currentWeatherInfo?.main?.pressure ?: 0,
                     unit = "hpa",
                     icon = ImageVector.vectorResource(id = R.drawable.ic_pressure),
                     iconTint = Color.White,
                     textStyle = TextStyle(color = Color.White)
                 )
-                CurrentWeatherInfoUI(
+                CurrentWeatherInfoRow(
                     value = data.currentWeatherInfo?.main?.humidity ?: 0,
                     unit = "%",
                     icon = ImageVector.vectorResource(id = R.drawable.ic_drop),
                     iconTint = Color.White,
                     textStyle = TextStyle(color = Color.White)
                 )
-                CurrentWeatherInfoUI(
+                CurrentWeatherInfoRow(
                     value = data.currentWeatherInfo?.wind?.speed?.toInt() ?: 0,
                     unit = "km/h",
                     icon = ImageVector.vectorResource(id = R.drawable.ic_wind),

@@ -12,8 +12,8 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionsRequired
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.test.weather.ScreenRoute
-import com.test.weather.ui.permissionscreen.composables.PermissionNotGrantedUI
-import com.test.weather.ui.permissionscreen.composables.WaitForPermissionUI
+import com.test.weather.ui.permissionscreen.composables.PermissionNotGrantedMessage
+import com.test.weather.ui.permissionscreen.composables.WaitForPermissionMessage
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
@@ -34,13 +34,13 @@ fun PermissionsScreen(
         multiplePermissionsState = multiplePermissionState,
         permissionsNotGrantedContent = {
             if (doNotShowMeRationale) {
-                WaitForPermissionUI(onYesClick = {
+                WaitForPermissionMessage(onYesClick = {
                     multiplePermissionState
                         .launchMultiplePermissionRequest()
                 }, onCancelClick = { navController.popBackStack() })
 
             } else {
-                PermissionNotGrantedUI(
+                PermissionNotGrantedMessage(
                     onYesClick = { multiplePermissionState.launchMultiplePermissionRequest() },
                     onCancelClick = { doNotShowMeRationale = true })
             }
