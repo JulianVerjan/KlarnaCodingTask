@@ -74,7 +74,7 @@ For more information related to the libraries used, please check the dependencie
 #### What would I do if I had more time
 
 1. I would have liked to implement the UI tests but due to the time I had to do the test, I was only able to implement the unit tests
-2. I would have liked to work a little more on the design as there are details and components in the code that could be done better.
+2. I would have liked to work a little more on the design as there are details and components in the code that could be done better. An example of this is the expandable/collapsible header, the idea of this component was that it would collapse when scrolling down to show more information components which due to lack of time were not implemented, so that component was left halfway and even if you scroll down you see a space that is very large in the middle.
 3. I would have liked to created a `:common` resources module. For example, there is a class that I use in the unit tests to mock the information which I had to copy and paste in all the layers, causing the code to be quite repeated. If I had created a `:common` module, the above would have been avoided.
 4. If I had had more time I would have tried to organize the code a little better in the feature module and I would have tried to separate it into some utility classes.
 5. There are some strings in the feature code that are hardcoded, I would like to fix this as well.
