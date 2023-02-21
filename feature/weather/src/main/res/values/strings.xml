@@ -10,5 +10,7 @@
     <string name="weather_next_days_title">How will the weather be the next 5 days?</string>
     <string name="weather_sunrise_title">Sunrise</string>
     <string name="weather_sunset_title">Sunset</string>
+    <string name="weather_sunset_country_title">Country</string>
+
 
 </resources>

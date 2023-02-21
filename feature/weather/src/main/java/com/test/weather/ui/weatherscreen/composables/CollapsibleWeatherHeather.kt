@@ -99,6 +99,8 @@ fun CollapsibleWeatherHeader(
             val hourSunset = Date(sunsetTimeStamp * 1000)
             val minTemperature = (state.currentWeatherInfo?.main?.temp_min.toString()
                     + "° Min temperature")
+            val feelsLike = (state.currentWeatherInfo?.main?.feels_like.toString()
+                    + "°")
             Row {
                 CurrentWeatherSecondaryCard(
                     simpleDateFormat.format(hourSunset),
@@ -108,6 +110,27 @@ fun CollapsibleWeatherHeader(
                 CurrentWeatherSecondaryCard(
                     minTemperature,
                     R.drawable.ic_min_temperature
+                )
+            }
+
+            Text(
+                text = stringResource(R.string.weather_sunset_country_title),
+                style = TextStyle(
+                    fontSize = 20.sp,
+                    color = colorResource(R.color.white)
+                ),
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(16.dp)
+            )
+            Row {
+                CurrentWeatherSecondaryCard(
+                    state.forecastInfo?.city?.country ?: "",
+                    R.drawable.ic_flag
+                )
+                Spacer(Modifier.size(2.dp))
+                CurrentWeatherSecondaryCard(
+                    feelsLike,
+                    R.drawable.ic_feels_like
                 )
             }
         }
