@@ -23,13 +23,12 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-val simpleDateFormat = SimpleDateFormat("HH:mm:ss", Locale.ENGLISH)
+private val simpleDateFormat = SimpleDateFormat("HH:mm", Locale.ENGLISH)
 
 @Composable
 fun SunsetAndSunriseCard(timeStamp: Long, @DrawableRes iconRes: Int) {
-    val stampSunrise = Timestamp(timeStamp)
-    val date = Date(stampSunrise.time)
-    val sunrise = simpleDateFormat.format(date)
+    val date = Date(timeStamp * 1000)
+    val formatHour = simpleDateFormat.format(date)
     Card(
         backgroundColor = colorResource(id = R.color.weather_screen_background),
         modifier = Modifier
@@ -48,7 +47,7 @@ fun SunsetAndSunriseCard(timeStamp: Long, @DrawableRes iconRes: Int) {
                     "content description"
                 )
                 Text(
-                    text = sunrise,
+                    text = formatHour,
                     textAlign = TextAlign.Center,
                     style = TextStyle(color = colorResource(R.color.white))
                 )
