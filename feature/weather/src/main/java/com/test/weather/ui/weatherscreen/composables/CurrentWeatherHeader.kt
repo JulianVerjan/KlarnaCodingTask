@@ -54,21 +54,21 @@ fun CurrentWeatherHeader(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
-                WeatherDataDisplay(
+                CurrentWeatherInfoUI(
                     value = data.currentWeatherInfo?.main?.pressure ?: 0,
                     unit = "hpa",
                     icon = ImageVector.vectorResource(id = R.drawable.ic_pressure),
                     iconTint = Color.White,
                     textStyle = TextStyle(color = Color.White)
                 )
-                WeatherDataDisplay(
+                CurrentWeatherInfoUI(
                     value = data.currentWeatherInfo?.main?.humidity ?: 0,
                     unit = "%",
                     icon = ImageVector.vectorResource(id = R.drawable.ic_drop),
                     iconTint = Color.White,
                     textStyle = TextStyle(color = Color.White)
                 )
-                WeatherDataDisplay(
+                CurrentWeatherInfoUI(
                     value = data.currentWeatherInfo?.wind?.speed?.toInt() ?: 0,
                     unit = "km/h",
                     icon = ImageVector.vectorResource(id = R.drawable.ic_wind),

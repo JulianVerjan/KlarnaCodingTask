@@ -4,7 +4,6 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Arrangement
@@ -27,35 +26,33 @@ import java.util.Locale
 val simpleDateFormat = SimpleDateFormat("HH:mm:ss", Locale.ENGLISH)
 
 @Composable
-fun SunriseAndSunsetUI(timeStamp: Long,  @DrawableRes iconRes:Int) {
+fun SunriseAndSunsetUI(timeStamp: Long, @DrawableRes iconRes: Int) {
     val stampSunrise = Timestamp(timeStamp)
     val date = Date(stampSunrise.time)
     val sunrise = simpleDateFormat.format(date)
-    Row {
-        Card(
-            backgroundColor = colorResource(id = R.color.weather_screen_background),
+    Card(
+        backgroundColor = colorResource(id = R.color.weather_screen_background),
+        modifier = Modifier
+            .height(180.dp)
+            .width(200.dp)
+            .padding(start = 16.dp)
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
             modifier = Modifier
-                .height(180.dp)
-                .width(200.dp)
-                .padding(start = 16.dp)
-        ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
-                modifier = Modifier
-                    .padding(24.dp),
-                content = {
-                    Image(
-                        painterResource(iconRes),
-                        "content description"
-                    )
-                    Text(
-                        text = sunrise,
-                        textAlign = TextAlign.Center,
-                        style = TextStyle(color = colorResource(R.color.white))
-                    )
-                }
-            )
-        }
+                .padding(24.dp),
+            content = {
+                Image(
+                    painterResource(iconRes),
+                    "content description"
+                )
+                Text(
+                    text = sunrise,
+                    textAlign = TextAlign.Center,
+                    style = TextStyle(color = colorResource(R.color.white))
+                )
+            }
+        )
     }
 }

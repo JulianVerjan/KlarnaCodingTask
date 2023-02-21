@@ -15,7 +15,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun WeatherDataDisplay(
+fun CurrentWeatherInfoUI(
     value: Int,
     unit: String,
     icon: ImageVector,
