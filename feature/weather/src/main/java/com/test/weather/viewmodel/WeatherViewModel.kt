@@ -11,7 +11,11 @@ import com.test.weather.mapper.toCurrentWeatherInfoUI
 import com.test.weather.ui.weatherscreen.UIState
 import com.test.weather.ui.weatherscreen.WeatherInfoState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.zip
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
